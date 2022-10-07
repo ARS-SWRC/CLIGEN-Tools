@@ -35,12 +35,12 @@ def run_cligen( parFile, cligenDir, parDir, outputDir, consoleDir ):
         try:
             result = sub.run( args=args, check=True, capture_output=True, text=True, shell=True, cwd=cligenDir )
             # =========================================================================
-            # remove parfile after it's been run
+            # remove parfile from cligen directory after executing
             # =========================================================================
             os.remove( os.path.join( cligenDir + '\\' + parFile ) )
         
             # =========================================================================
-            # copy output to output folder and remove output to cligen directory
+            # copy output to output folder and remove output in cligen directory
             # =========================================================================
             copyfile( os.path.join( cligenDir, parFile.strip( '.par' ) + '.txt' ), 
                       os.path.join( outputDir, parFile.strip( '.par' ) + '.txt' ) )
@@ -52,7 +52,7 @@ def run_cligen( parFile, cligenDir, parDir, outputDir, consoleDir ):
         
         except sub.CalledProcessError:
             # =========================================================================
-            # remove parfile after it's been run
+            # remove parfile from cligen directory after executing
             # =========================================================================
             os.remove( os.path.join( cligenDir, parFile ) )
                     
