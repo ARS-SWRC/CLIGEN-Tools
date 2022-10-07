@@ -10,7 +10,6 @@ import os
 # =============================================================================
 # Manually enter directory paths below
 # =============================================================================
-
 cligenFolder = r'...\cligenv53'
 parFolder = r'...\parFolder'
 outputFolder = r'...\outputFolder'
