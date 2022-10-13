@@ -8,6 +8,9 @@ import pandas as pd
 from classes.Formatting import Formatting
 formatting_obj = Formatting()
 
+# =============================================================================
+# Manually enter directory paths below
+# =============================================================================
 excelFolder = r'...\excelFolder'
 outputFolder = r'...\outputFolder'
 
