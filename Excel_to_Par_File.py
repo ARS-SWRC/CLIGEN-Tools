@@ -428,18 +428,3 @@ def write_par( excelFile, excelFolder, outputFolder ):
 for file in files:
     output = write_par( file, excelFolder, outputFolder )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
