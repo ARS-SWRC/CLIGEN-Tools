@@ -8,8 +8,8 @@ import pandas as pd
 from classes.Formatting import Formatting
 formatting_obj = Formatting()
 
-excelFolder = r'C:\Users\afullhart\Desktop\CLIGEN-Tools\excelFolder'
-outputFolder = r'C:\Users\afullhart\Desktop\CLIGEN-Tools\outputFolder'
+excelFolder = r'...\excelFolder'
+outputFolder = r'...\outputFolder'
 
 files = os.listdir( excelFolder )
 
