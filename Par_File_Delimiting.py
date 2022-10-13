@@ -25,7 +25,7 @@ def delimit_parFile( parFile, parDir, delimitedDir ):
         if line[:4] == 'CALM':
             bott_skip_lines = len(lines) - i - 1
     
-    with open(os.path.join( delimitedDir, parFile ), 'w+') as f_out:    
+    with open(os.path.join( delimitedDir, parFile ), 'w') as f_out:    
     
         top_skip_lines = 3    
     
