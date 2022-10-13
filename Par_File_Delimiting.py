@@ -15,7 +15,6 @@ delimitedFolder = r'...\delimitedFolder'
 parFiles = os.listdir( parFolder )
 
 
-
 def delimit_parFile( parFile, parDir, delimitedDir ):
     
     with open(os.path.join( parDir, parFile )) as f_in:
