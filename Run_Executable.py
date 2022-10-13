@@ -29,7 +29,7 @@ def run_cligen( parFile, cligenDir, parDir, outputDir, consoleDir ):
     copyfile( os.path.join( parDir, parFile ), os.path.join( cligenDir, parFile ) )
 
     args = 'cligen53 -b1 -y{} -t5 -i{} -o{}'.format( REC_LEN, parFile, parFile.strip( '.par' ) + '.txt' )
-    with open(os.path.join( consoleDir, parFile.strip( '.par' ) + '.txt' ), 'w+') as f_out:
+    with open(os.path.join( consoleDir, parFile.strip( '.par' ) + '.txt' ), 'w') as f_out:
     
         try:
             result = sub.run( args=args, check=True, capture_output=True, text=True, shell=True, cwd=cligenDir )
