@@ -19,90 +19,90 @@ files = os.listdir( excelFolder )
 
 def write_par( excelFile, excelFolder, outputFolder ):
 
-    filePath = os.path.join( excelFolder, excelFile )
+    filePath = os.path.join( excelFolder , excelFile )
     
     names = ['par', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     df = pd.read_excel( filePath, names=names, header=None, index_col=False )
     
-    meanP_list = df.loc[df['par'] == 'MEAN P'].iloc[:,1:].values.tolist()[0]
-    sdevP_list = df.loc[df['par'] == 'S DEV P'].iloc[:,1:].values.tolist()[0]
-    skewP_list = df.loc[df['par'] == 'SKEW  P'].iloc[:,1:].values.tolist()[0]
-    ww_list = df.loc[df['par'] == 'P(W/W)'].iloc[:,1:].values.tolist()[0]
-    wd_list = df.loc[df['par'] == 'P(W/D)'].iloc[:,1:].values.tolist()[0]
-    tmax_list = df.loc[df['par'] == 'TMAX AV'].iloc[:,1:].values.tolist()[0]
-    tmin_list = df.loc[df['par'] == 'TMIN AV'].iloc[:,1:].values.tolist()[0]
-    sdtmax_list = df.loc[df['par'] == 'SD TMAX'].iloc[:,1:].values.tolist()[0]
-    sdtmin_list = df.loc[df['par'] == 'SD TMIN'].iloc[:,1:].values.tolist()[0]
-    solrad_list = df.loc[df['par'] == 'SOL.RAD'].iloc[:,1:].values.tolist()[0]
-    solsdev_list = df.loc[df['par'] == 'SD SOL'].iloc[:,1:].values.tolist()[0]
-    mx5p_list = df.loc[df['par'] == 'MX .5 P'].iloc[:,1:].values.tolist()[0]
-    dewpt_list = df.loc[df['par'] == 'DEW PT'].iloc[:,1:].values.tolist()[0]
-    timepk_list = df.loc[df['par'] == 'Time Pk'].iloc[:,1:].values.tolist()[0]
-    N_list = df.loc[df['par'] == '% N'].iloc[:,1:].values.tolist()[0]
-    Nmean_list = df.iloc[18][1:].values.tolist()
-    Nsdev_list = df.iloc[19][1:].values.tolist()
-    Nskew_list = df.iloc[20][1:].values.tolist()
-    NNE_list = df.loc[df['par'] == '% NNE'].iloc[:,1:].values.tolist()[0]
-    NNEmean_list = df.iloc[22][1:].values.tolist()
-    NNEsdev_list = df.iloc[23][1:].values.tolist()
-    NNEskew_list = df.iloc[24][1:].values.tolist()
-    NE_list = df.loc[df['par'] == '% NE'].iloc[:,1:].values.tolist()[0]
-    NEmean_list = df.iloc[26][1:].values.tolist()
-    NEsdev_list = df.iloc[27][1:].values.tolist()
-    NEskew_list = df.iloc[28][1:].values.tolist()
-    ENE_list = df.loc[df['par'] == '% ENE'].iloc[:,1:].values.tolist()[0]
-    ENEmean_list = df.iloc[30][1:].values.tolist()
-    ENEsdev_list = df.iloc[31][1:].values.tolist()
-    ENEskew_list = df.iloc[32][1:].values.tolist()
-    E_list = df.loc[df['par'] == '% E'].iloc[:,1:].values.tolist()[0]
-    Emean_list = df.iloc[34][1:].values.tolist()
-    Esdev_list = df.iloc[35][1:].values.tolist()
-    Eskew_list = df.iloc[36][1:].values.tolist()
-    ESE_list = df.loc[df['par'] == '% ESE'].iloc[:,1:].values.tolist()[0]
-    ESEmean_list = df.iloc[38][1:].values.tolist()
-    ESEsdev_list = df.iloc[39][1:].values.tolist()
-    ESEskew_list = df.iloc[40][1:].values.tolist()
-    SE_list = df.loc[df['par'] == '% SE'].iloc[:,1:].values.tolist()[0]
-    SEmean_list = df.iloc[42][1:].values.tolist()
-    SEsdev_list = df.iloc[43][1:].values.tolist()
-    SEskew_list = df.iloc[44][1:].values.tolist()
-    SSE_list = df.loc[df['par'] == '% SSE'].iloc[:,1:].values.tolist()[0]
-    SSEmean_list = df.iloc[46][1:].values.tolist()
-    SSEsdev_list = df.iloc[47][1:].values.tolist()
-    SSEskew_list = df.iloc[48][1:].values.tolist()
-    S_list = df.loc[df['par'] == '% S'].iloc[:,1:].values.tolist()[0]
-    Smean_list = df.iloc[50][1:].values.tolist()
-    Ssdev_list = df.iloc[51][1:].values.tolist()
-    Sskew_list = df.iloc[52][1:].values.tolist()
-    SSW_list = df.loc[df['par'] == '% SSW'].iloc[:,1:].values.tolist()[0]
-    SSWmean_list = df.iloc[54][1:].values.tolist()
-    SSWsdev_list = df.iloc[55][1:].values.tolist()
-    SSWskew_list = df.iloc[56][1:].values.tolist()    
-    SW_list = df.loc[df['par'] == '% SW'].iloc[:,1:].values.tolist()[0]
-    SWmean_list = df.iloc[58][1:].values.tolist()
-    SWsdev_list = df.iloc[59][1:].values.tolist()
-    SWskew_list = df.iloc[60][1:].values.tolist()      
-    WSW_list = df.loc[df['par'] == '% WSW'].iloc[:,1:].values.tolist()[0]
-    WSWmean_list = df.iloc[62][1:].values.tolist()
-    WSWsdev_list = df.iloc[63][1:].values.tolist()
-    WSWskew_list = df.iloc[64][1:].values.tolist()   
-    W_list = df.loc[df['par'] == '% W'].iloc[:,1:].values.tolist()[0]
-    Wmean_list = df.iloc[66][1:].values.tolist()
-    Wsdev_list = df.iloc[67][1:].values.tolist()
-    Wskew_list = df.iloc[68][1:].values.tolist()
-    WNW_list = df.loc[df['par'] == '% WNW'].iloc[:,1:].values.tolist()[0]
-    WNWmean_list = df.iloc[70][1:].values.tolist()
-    WNWsdev_list = df.iloc[71][1:].values.tolist()
-    WNWskew_list = df.iloc[72][1:].values.tolist()  
-    NW_list = df.loc[df['par'] == '% NW'].iloc[:,1:].values.tolist()[0]
-    NWmean_list = df.iloc[74][1:].values.tolist()
-    NWsdev_list = df.iloc[75][1:].values.tolist()
-    NWskew_list = df.iloc[76][1:].values.tolist()  
-    NNW_list = df.loc[df['par'] == '% NNW'].iloc[:,1:].values.tolist()[0]
-    NNWmean_list = df.iloc[78][1:].values.tolist()
-    NNWsdev_list = df.iloc[79][1:].values.tolist()
-    NNWskew_list = df.iloc[80][1:].values.tolist()      
-    calm_list = df.loc[df['par'] == 'CALM'].iloc[:,1:].values.tolist()[0]
+    meanP_list = df.loc[df['par'] == 'MEAN P'].iloc[:,1:].astype(float).values.tolist()[0]
+    sdevP_list = df.loc[df['par'] == 'S DEV P'].iloc[:,1:].astype(float).values.tolist()[0]
+    skewP_list = df.loc[df['par'] == 'SKEW  P'].iloc[:,1:].astype(float).values.tolist()[0]
+    ww_list = df.loc[df['par'] == 'P(W/W)'].iloc[:,1:].astype(float).values.tolist()[0]
+    wd_list = df.loc[df['par'] == 'P(W/D)'].iloc[:,1:].astype(float).values.tolist()[0]
+    tmax_list = df.loc[df['par'] == 'TMAX AV'].iloc[:,1:].astype(float).values.tolist()[0]
+    tmin_list = df.loc[df['par'] == 'TMIN AV'].iloc[:,1:].astype(float).values.tolist()[0]
+    sdtmax_list = df.loc[df['par'] == 'SD TMAX'].iloc[:,1:].astype(float).values.tolist()[0]
+    sdtmin_list = df.loc[df['par'] == 'SD TMIN'].iloc[:,1:].astype(float).values.tolist()[0]
+    solrad_list = df.loc[df['par'] == 'SOL.RAD'].iloc[:,1:].astype(float).values.tolist()[0]
+    solsdev_list = df.loc[df['par'] == 'SD SOL'].iloc[:,1:].astype(float).values.tolist()[0]
+    mx5p_list = df.loc[df['par'] == 'MX .5 P'].iloc[:,1:].astype(float).values.tolist()[0]
+    dewpt_list = df.loc[df['par'] == 'DEW PT'].iloc[:,1:].astype(float).values.tolist()[0]
+    timepk_list = df.loc[df['par'] == 'Time Pk'].iloc[:,1:].astype(float).values.tolist()[0]
+    N_list = df.loc[df['par'] == '% N'].iloc[:,1:].astype(float).values.tolist()[0]
+    Nmean_list = df.iloc[18][1:].astype(float).values.tolist()
+    Nsdev_list = df.iloc[19][1:].astype(float).values.tolist()
+    Nskew_list = df.iloc[20][1:].astype(float).values.tolist()
+    NNE_list = df.loc[df['par'] == '% NNE'].iloc[:,1:].astype(float).values.tolist()[0]
+    NNEmean_list = df.iloc[22][1:].astype(float).values.tolist()
+    NNEsdev_list = df.iloc[23][1:].astype(float).values.tolist()
+    NNEskew_list = df.iloc[24][1:].astype(float).values.tolist()
+    NE_list = df.loc[df['par'] == '% NE'].iloc[:,1:].astype(float).values.tolist()[0]
+    NEmean_list = df.iloc[26][1:].astype(float).values.tolist()
+    NEsdev_list = df.iloc[27][1:].astype(float).values.tolist()
+    NEskew_list = df.iloc[28][1:].astype(float).values.tolist()
+    ENE_list = df.loc[df['par'] == '% ENE'].iloc[:,1:].astype(float).values.tolist()[0]
+    ENEmean_list = df.iloc[30][1:].astype(float).values.tolist()
+    ENEsdev_list = df.iloc[31][1:].astype(float).values.tolist()
+    ENEskew_list = df.iloc[32][1:].astype(float).values.tolist()
+    E_list = df.loc[df['par'] == '% E'].iloc[:,1:].astype(float).values.tolist()[0]
+    Emean_list = df.iloc[34][1:].astype(float).values.tolist()
+    Esdev_list = df.iloc[35][1:].astype(float).values.tolist()
+    Eskew_list = df.iloc[36][1:].astype(float).values.tolist()
+    ESE_list = df.loc[df['par'] == '% ESE'].iloc[:,1:].astype(float).values.tolist()[0]
+    ESEmean_list = df.iloc[38][1:].astype(float).values.tolist()
+    ESEsdev_list = df.iloc[39][1:].astype(float).values.tolist()
+    ESEskew_list = df.iloc[40][1:].astype(float).values.tolist()
+    SE_list = df.loc[df['par'] == '% SE'].iloc[:,1:].astype(float).values.tolist()[0]
+    SEmean_list = df.iloc[42][1:].astype(float).values.tolist()
+    SEsdev_list = df.iloc[43][1:].astype(float).values.tolist()
+    SEskew_list = df.iloc[44][1:].astype(float).values.tolist()
+    SSE_list = df.loc[df['par'] == '% SSE'].iloc[:,1:].astype(float).values.tolist()[0]
+    SSEmean_list = df.iloc[46][1:].astype(float).values.tolist()
+    SSEsdev_list = df.iloc[47][1:].astype(float).values.tolist()
+    SSEskew_list = df.iloc[48][1:].astype(float).values.tolist()
+    S_list = df.loc[df['par'] == '% S'].iloc[:,1:].astype(float).values.tolist()[0]
+    Smean_list = df.iloc[50][1:].astype(float).values.tolist()
+    Ssdev_list = df.iloc[51][1:].astype(float).values.tolist()
+    Sskew_list = df.iloc[52][1:].astype(float).values.tolist()
+    SSW_list = df.loc[df['par'] == '% SSW'].iloc[:,1:].astype(float).values.tolist()[0]
+    SSWmean_list = df.iloc[54][1:].astype(float).values.tolist()
+    SSWsdev_list = df.iloc[55][1:].astype(float).values.tolist()
+    SSWskew_list = df.iloc[56][1:].astype(float).values.tolist()    
+    SW_list = df.loc[df['par'] == '% SW'].iloc[:,1:].astype(float).values.tolist()[0]
+    SWmean_list = df.iloc[58][1:].astype(float).values.tolist()
+    SWsdev_list = df.iloc[59][1:].astype(float).values.tolist()
+    SWskew_list = df.iloc[60][1:].astype(float).values.tolist()      
+    WSW_list = df.loc[df['par'] == '% WSW'].iloc[:,1:].astype(float).values.tolist()[0]
+    WSWmean_list = df.iloc[62][1:].astype(float).values.tolist()
+    WSWsdev_list = df.iloc[63][1:].astype(float).values.tolist()
+    WSWskew_list = df.iloc[64][1:].astype(float).values.tolist()   
+    W_list = df.loc[df['par'] == '% W'].iloc[:,1:].astype(float).values.tolist()[0]
+    Wmean_list = df.iloc[66][1:].astype(float).values.tolist()
+    Wsdev_list = df.iloc[67][1:].astype(float).values.tolist()
+    Wskew_list = df.iloc[68][1:].astype(float).values.tolist()
+    WNW_list = df.loc[df['par'] == '% WNW'].iloc[:,1:].astype(float).values.tolist()[0]
+    WNWmean_list = df.iloc[70][1:].astype(float).values.tolist()
+    WNWsdev_list = df.iloc[71][1:].astype(float).values.tolist()
+    WNWskew_list = df.iloc[72][1:].astype(float).values.tolist()  
+    NW_list = df.loc[df['par'] == '% NW'].iloc[:,1:].astype(float).values.tolist()[0]
+    NWmean_list = df.iloc[74][1:].astype(float).values.tolist()
+    NWsdev_list = df.iloc[75][1:].astype(float).values.tolist()
+    NWskew_list = df.iloc[76][1:].astype(float).values.tolist()  
+    NNW_list = df.loc[df['par'] == '% NNW'].iloc[:,1:].astype(float).values.tolist()[0]
+    NNWmean_list = df.iloc[78][1:].astype(float).values.tolist()
+    NNWsdev_list = df.iloc[79][1:].astype(float).values.tolist()
+    NNWskew_list = df.iloc[80][1:].astype(float).values.tolist()      
+    calm_list = df.loc[df['par'] == 'CALM'].iloc[:,1:].astype(float).values.tolist()[0]
     
     meanP, sdevP, skewP, ww, wd = [], [], [], [], []
     tmax, tmin, sdtmax, sdtmin = [], [], [], []
