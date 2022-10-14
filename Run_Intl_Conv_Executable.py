@@ -9,9 +9,9 @@ from subprocess import Popen, PIPE
 import shutil
 import os
 
-parFolder = r'C:\Users\afullhart\Desktop\CLIGEN-Tools\parFolder'
-outputFolder = r'C:\Users\afullhart\Desktop\CLIGEN-Tools\outputFolder'
-intlFolder = r'C:\Users\afullhart\Downloads\international'
+parFolder = r'...\parFolder'
+outputFolder = r'...\outputFolder'
+intlFolder = r'...\international'
 
 parFiles = os.listdir( parFolder )
 topFiles = [file.strip( '.par' ) + '.top' for file in parFiles]
