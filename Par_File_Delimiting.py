@@ -1,6 +1,6 @@
 # =============================================================================
 # Creates tab delimited text file from a *.par file that can be properly imported 
-# into an Excel spreadsheet
+# into an Excel spreadsheet. Makes Excel spreadsheets using Pandas.
 # =============================================================================
 
 import pandas as pd
