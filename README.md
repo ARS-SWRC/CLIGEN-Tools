@@ -3,7 +3,7 @@ Various Python scripts for working with CLIGEN
 
 - Run CLIGEN
 - Run international CLIGEN conversion tool
-- Manipulate *.par file parameters
+- Manipulate *.par file parameters in Excel
 - Disaggregation to any sub-daily timestep
 - Rainfall erosivity
 - Extreme precipitation depth-duration-frequency
