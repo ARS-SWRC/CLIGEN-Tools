@@ -105,7 +105,7 @@ def delimit_parFile( parFile, parDir, delimitedDir, excelDir ):
     df.to_excel( os.path.join( excelDir, excelFile ), columns=None, 
                  header=False, index=False )
     
-    return df
+    return 0
 
 
 run_ct = 0
