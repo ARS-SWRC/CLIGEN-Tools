@@ -3,6 +3,7 @@
 # into an Excel spreadsheet
 # =============================================================================
 
+import pandas as pd
 import string
 import os
 
@@ -11,11 +12,12 @@ import os
 # =============================================================================
 parFolder = r'...\parFolder'
 delimitedFolder = r'...\delimitedFolder'
+excelFolder = r'...\excelFolder'
 
 parFiles = os.listdir( parFolder )
 
 
-def delimit_parFile( parFile, parDir, delimitedDir ):
+def delimit_parFile( parFile, parDir, delimitedDir, excelDir ):
     
     with open(os.path.join( parDir, parFile )) as f_in:
         lines = f_in.readlines()
@@ -93,12 +95,22 @@ def delimit_parFile( parFile, parDir, delimitedDir ):
             else:
                 pass
     
-    return 0
+    df = pd.read_csv( os.path.join( delimitedDir, parFile ), sep='\t', 
+                      names=list(range(13)), header=None, index_col=False, 
+                      skip_blank_lines=False, dtype=str )
 
+    
+    excelFile = parFile.strip( '.par' ) + '.xlsx'
+    
+    df.to_excel( os.path.join( excelDir, excelFile ), columns=None, 
+                 header=False, index=False )
+    
+    return df
 
 
 run_ct = 0
 for file in parFiles:
-    output = delimit_parFile( file, parFolder, delimitedFolder )
+    output = delimit_parFile( file, parFolder, delimitedFolder, excelFolder )
     run_ct += 1
     print(str(run_ct) + ' / ' + str(len(parFiles)))
+
