@@ -9,6 +9,9 @@ from subprocess import Popen, PIPE
 import shutil
 import os
 
+# =============================================================================
+# Manually enter directory paths below
+# =============================================================================
 parFolder = r'...\parFolder'
 outputFolder = r'...\outputFolder'
 intlFolder = r'...\international'
