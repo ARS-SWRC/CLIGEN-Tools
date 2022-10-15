@@ -98,7 +98,6 @@ def delimit_parFile( parFile, parDir, delimitedDir, excelDir ):
     df = pd.read_csv( os.path.join( delimitedDir, parFile ), sep='\t', 
                       names=list(range(13)), header=None, index_col=False, 
                       skip_blank_lines=False, dtype=str )
-
     
     excelFile = parFile.strip( '.par' ) + '.xlsx'
     
