@@ -11,10 +11,10 @@ import os
 # =============================================================================
 # Manually enter directory paths below
 # =============================================================================
-tseriesFolder = r'C:\Users\afullhart\Desktop\CLIGEN-Tools\tseriesFolder'
-outputFolder = r'C:\Users\afullhart\Desktop\CLIGEN-Tools\outputFolder'
+tseriesFolder = r'...\tseriesFolder'
+outputFolder = r'...\outputFolder'
 
-REC_LEN = 13
+REC_LEN = 200
 
 tseriesFiles = os.listdir( tseriesFolder )
 
