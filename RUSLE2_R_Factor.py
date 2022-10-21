@@ -1,7 +1,7 @@
 #==============================================================================
-#Calculates RUSLE2 R-factor from daily CLIGEN timeseries output according to
-#Bofu Yu (2002) - Using CLIGEN to Generate RUSLE Climate Inputs [Trans. ASABE]
-#erosivity units: (Mj mm / ha h yr), erosivity density units: (Mj / ha h yr)
+# Calculates RUSLE2 R-factor from daily CLIGEN timeseries output according to
+# Bofu Yu (2002) - Using CLIGEN to Generate RUSLE Climate Inputs [Trans. ASABE]
+# erosivity units: (Mj mm / ha h yr), erosivity density units: (Mj / ha h yr)
 #==============================================================================
 
 from scipy import optimize
