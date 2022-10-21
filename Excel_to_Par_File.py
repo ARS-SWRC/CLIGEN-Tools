@@ -1,6 +1,6 @@
 #==============================================================================
-#Converts an Excel file that contains imported text output from 
-#Par_File_Delimiting.py into a par file
+# Converts an Excel file that contains imported text output from 
+# Par_File_Delimiting.py into a par file
 #==============================================================================
 
 import os
