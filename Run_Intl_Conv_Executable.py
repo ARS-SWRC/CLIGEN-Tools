@@ -1,8 +1,8 @@
 #==============================================================================
-#Runs the International CLIGEN Conversion Tool.
-#Takes the first 12 lines of par files and 
-#finds similar stations to take the remaining parameters from. 
-#Makes new par files from the parameters.
+# Runs the International CLIGEN Conversion Tool.
+# Takes the first 12 lines of par files and 
+# finds similar stations to take the remaining parameters from. 
+# Makes new par files from the parameters.
 #==============================================================================
 
 from subprocess import Popen, PIPE
