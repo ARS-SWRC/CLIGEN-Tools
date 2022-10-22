@@ -25,8 +25,8 @@ warnings.filterwarnings( 'error' )
 #==============================================================================
 # Manually enter directory paths below
 #==============================================================================
-tseriesFolder = r'C:\Users\afullhart\Desktop\CLIGEN-Tools\tseriesFolder'
-outputFolder = r'C:\Users\afullhart\Desktop\CLIGEN-Tools\outputFolder'
+tseriesFolder = r'...\tseriesFolder'
+outputFolder = r'...\outputFolder'
 
 #==============================================================================
 # Duration schemes list may be modified to include any duration in the range 
