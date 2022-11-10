@@ -8,6 +8,9 @@ import os
 from classes.Disaggregate import Disaggregate
 disagg_obj = Disaggregate()
 
+#==============================================================================
+# Manually enter directory paths below
+#==============================================================================
 tseriesFolder = r'...\tseriesFolder'
 outputFolder = r'...\outputFolder'
 
