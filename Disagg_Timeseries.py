@@ -8,8 +8,8 @@ import os
 from classes.Disaggregate import Disaggregate
 disagg_obj = Disaggregate()
 
-tseriesFolder = r'C:\Users\afullhart\Desktop\CLIGEN-Tools\tseriesFolder'
-outputFolder = r'C:\Users\afullhart\Desktop\CLIGEN-Tools\outputFolder'
+tseriesFolder = r'...\tseriesFolder'
+outputFolder = r'...\outputFolder'
 
 MIN_INTERVAL = 10
 START_DATE = '2001,01,01' #Zero-padded year,month,day. Needs to be the first day of a year after a leap year.
