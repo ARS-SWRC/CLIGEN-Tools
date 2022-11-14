@@ -13,8 +13,8 @@ import random
 #==============================================================================
 # Manually enter directory paths below
 #==============================================================================
-tseriesFolder = r'C:\Users\afullhart\Desktop\CLIGEN-Tools\tseriesFolder'
-reorderedFolder = r'C:\Users\afullhart\Desktop\CLIGEN-Tools\reorderedFolder'
+tseriesFolder = r'...\tseriesFolder'
+reorderedFolder = r'...\reorderedFolder'
 
 tseriesFiles = os.listdir( tseriesFolder )
 
