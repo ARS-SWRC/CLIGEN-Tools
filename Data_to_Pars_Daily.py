@@ -145,7 +145,7 @@ def daily_pars( dataFile, dataDir, parDir ):
         tmaxsd = '{:.2f}'.format( tmax_sd_list[i] ).lstrip( '0' )
         tminsd = '{:.2f}'.format( tmin_sd_list[i] ).lstrip( '0' )
         srad = '{:.0f}'.format( srad_list[i] ) + '.'
-        sradsd = '{:.1f}'.format( tmin_sd_list[i] ).lstrip( '0' )
+        sradsd = '{:.1f}'.format( srad_sd_list[i] ).lstrip( '0' )
         tdew = '{:.2f}'.format( tdew_list[i] ).lstrip( '0' )
         
         ###
@@ -196,6 +196,8 @@ def daily_pars( dataFile, dataDir, parDir ):
                     f_out.write( elem.rjust( 6 ) + '\n' )
                 else:
                     pass
+                
+    return 0
 
 
 run_ct = 0
