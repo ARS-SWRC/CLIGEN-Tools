@@ -1,6 +1,6 @@
 # =============================================================================
 # Calculates daily CLIGEN precip parameters based on daily timeseries.
-# The formatting of input data should match Daily_Data_WG_1.csv'
+# The formatting of input data should match Daily_Data_WG_1.csv.
 # Partial months or years are allowed (no checks for gaps).
 # Creates tab separated .txt file and comma separated .csv of parameter values.
 # =============================================================================
