@@ -4,10 +4,12 @@
 # Partial months or years are allowed (no checks for gaps).
 # Creates tab separated .txt file and comma separated .csv of parameter values.
 # =============================================================================
+
 import datetime as dt
 import pandas as pd
 import numpy as np
 import os
+
 #==============================================================================
 # Manually enter directory path below that contains script and data file.
 # This script prints daily precip parameters.
