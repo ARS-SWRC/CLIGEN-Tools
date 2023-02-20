@@ -1,6 +1,6 @@
 # =============================================================================
 # Creates tab delimited text file from a *.par file that can be properly imported 
-# into an Excel spreadsheet. Makes Excel spreadsheets using Pandas.
+# into an Excel spreadsheet. Also makes Excel workbook using Pandas.
 # =============================================================================
 
 import pandas as pd
@@ -26,7 +26,7 @@ def delimit_parFile( parFile, parDir, delimitedDir, excelDir ):
         if line[:4] == 'CALM':
             bott_skip_lines = len(lines) - i - 1
     
-    with open(os.path.join( delimitedDir, parFile ), 'w') as f_out:    
+    with open(os.path.join( delimitedDir, parFile.strip( '.par' ) + '.txt' ), 'w') as f_out:    
     
         top_skip_lines = 3    
     
@@ -71,18 +71,19 @@ def delimit_parFile( parFile, parDir, delimitedDir, excelDir ):
                 label = label.strip()
     
                 f_out.write( label + '\t' )
-    
-                line_filtered = line[label_end_i+1:]
-                line_filtered = line_filtered.replace( '  ', ' ' )
-                row = line_filtered.split( ' ' )
-    
+
+                dataline = line[8:]
+                row = [dataline[k*6:k*6+6] for k in range(0,12)]
+                print(row)
+                print(len(row))
+
                 for j, elem in enumerate(row):
-    
-                    if elem != '' and j < len(row)-1:
+
+                    if j < len(row)-1:
                         f_out.write( elem + '\t' )
                     
                     elif j == len(row) - 1:
-                        f_out.write( elem )
+                        f_out.write( elem + '\n' )
                         
                     else:
                         pass
@@ -95,14 +96,14 @@ def delimit_parFile( parFile, parDir, delimitedDir, excelDir ):
             else:
                 pass
     
-    df = pd.read_csv( os.path.join( delimitedDir, parFile ), sep='\t', 
+    df = pd.read_csv( os.path.join( delimitedDir, parFile.strip( '.par' ) + '.txt' ), sep='\t', 
                       names=list(range(13)), header=None, index_col=False, 
                       skip_blank_lines=False, dtype=str )
     
     excelFile = parFile.strip( '.par' ) + '.xlsx'
     
     df.to_excel( os.path.join( excelDir, excelFile ), columns=None, 
-                 header=False, index=False )
+                  header=False, index=False )
     
     return 0
 
@@ -112,4 +113,3 @@ for file in parFiles:
     output = delimit_parFile( file, parFolder, delimitedFolder, excelFolder )
     run_ct += 1
     print(str(run_ct) + ' / ' + str(len(parFiles)))
-
