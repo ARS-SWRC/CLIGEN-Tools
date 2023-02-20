@@ -202,12 +202,3 @@ for file in dataFiles:
     run_ct += 1
     print(str(run_ct) + ' / ' + str(len(dataFiles)))
     
-
-
-
-
-
-
-
-
-
