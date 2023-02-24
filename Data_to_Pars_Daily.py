@@ -12,7 +12,6 @@ import os
 
 #==============================================================================
 # Manually enter directory path below that contains script and data file.
-# This script prints daily precip parameters.
 #==============================================================================
 dataFolder = r'...\dataFolder'
 parFolder = r'...\dataParFolder'
