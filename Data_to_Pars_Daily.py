@@ -11,7 +11,7 @@ import numpy as np
 import os
 
 #==============================================================================
-# Manually enter directory path below that contains script and data file.
+# Manually enter directory paths below.
 #==============================================================================
 dataFolder = r'...\dataFolder'
 parFolder = r'...\dataParFolder'
