@@ -36,7 +36,7 @@ def run_cligen( parFile, cligenDir, parDir, outputDir, consoleDir ):
             # =========================================================================
             # remove parfile from cligen directory after executing
             # =========================================================================
-            os.remove( os.path.join( cligenDir + '\\' + parFile ) )
+            os.remove( os.path.join( cligenDir, parFile ) )
         
             # =========================================================================
             # copy output to output folder and remove output in cligen directory
