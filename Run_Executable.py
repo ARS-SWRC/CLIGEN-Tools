@@ -1,6 +1,3 @@
-#==============================================================================
-# Runs CLIGEN
-#==============================================================================
 
 from shutil import copyfile
 import subprocess as sub
@@ -10,63 +7,60 @@ import os
 # Manually enter directory paths below
 # =============================================================================
 cligenFolder = r'...\cligenv53'
-parFolder = r'...\parFolder'
-outputFolder = r'...\outputFolder'
-consoleFolder = r'...\consoleFolder'
+parFolder = r'...\pars'
+outputFolder = r'...\ouputs'
+consoleFolder = r'...\cons'
 
-REC_LEN = 300
+REC_LEN = 30
 
-parFiles = os.listdir( parFolder )
-
-
-def run_cligen( parFile, cligenDir, parDir, outputDir, consoleDir ):
-
-    error_file = []
-
-    # =========================================================================
-    # copy parfile to cligen directory
-    # =========================================================================
-    copyfile( os.path.join( parDir, parFile ), os.path.join( cligenDir, parFile ) )
-
-    args = 'cligen53 -b1 -y{} -t5 -i{} -o{}'.format( REC_LEN, parFile, parFile.strip( '.par' ) + '.txt' )
-    with open(os.path.join( consoleDir, parFile.strip( '.par' ) + '.txt' ), 'w') as f_out:
-    
-        try:
-            result = sub.run( args=args, check=True, capture_output=True, text=True, shell=True, cwd=cligenDir )
-            # =========================================================================
-            # remove parfile from cligen directory after executing
-            # =========================================================================
-            os.remove( os.path.join( cligenDir, parFile ) )
-        
-            # =========================================================================
-            # copy output to output folder and remove output in cligen directory
-            # =========================================================================
-            copyfile( os.path.join( cligenDir, parFile.strip( '.par' ) + '.txt' ), 
-                      os.path.join( outputDir, parFile.strip( '.par' ) + '.txt' ) )
-        
-            os.remove( os.path.join( cligenDir, parFile.strip( '.par' ) + '.txt' ) )
-        
-            f_out.write( result.stdout )
-            f_out.write( result.stderr )
-        
-        except sub.CalledProcessError:
-            # =========================================================================
-            # remove parfile from cligen directory after executing
-            # =========================================================================
-            os.remove( os.path.join( cligenDir, parFile ) )
-                    
-            error_file.append( parFile )
-
-    return error_file
+parFiles = os.listdir(parFolder)
 
 
-run_ct = 0
-error_files = []
-for file in parFiles:
-    output = run_cligen( file, cligenFolder, parFolder, outputFolder, consoleFolder )
-    run_ct += 1
-    print(str(run_ct) + ' / ' + str(len(parFiles)))
-    error_files.extend( output )
+failed_files = []
+
+def run_file(parfile):
+
+  # =========================================================================
+  # copy parfile to cligen directory
+  # =========================================================================
+  copyfile(os.path.join(parFolder, parfile), os.path.join(cligenFolder, parfile))
+
+  print(parfile)
+
+  args = 'cligen53 -b1 -y{} -t5 -i{} -o{}'.format(REC_LEN, parfile, parfile[:-4] + '.txt')
+
+  with open(os.path.join(consoleFolder, parfile[:-4] + '.txt'), 'w') as f_out:
+  
+    try:
+      result = sub.run(args=args, check=True, capture_output=True, text=True, shell=True, cwd=cligenFolder)
+      # =========================================================================
+      # remove parfile after it's been run
+      # =========================================================================
+      os.remove(os.path.join(cligenFolder, parfile))
+      # =========================================================================
+      # copy output to output folder and remove output to cligen directory
+      # =========================================================================
+      copyfile(os.path.join(cligenFolder, parfile[:-4] + '.txt'),
+               os.path.join(outputFolder, parfile[:-4] + '.txt'))
+  
+      os.remove(os.path.join(cligenFolder, parfile[:-4] + '.txt'))
+  
+      f_out.write(result.stdout)
+      f_out.write(result.stderr)
+  
+    except sub.CalledProcessError:
+      # =========================================================================
+      # remove parfile after it's been run
+      # =========================================================================
+      os.remove(os.path.join(cligenFolder, parfile))
+      
+      failed_files.append(parfile)
+
+  return None
 
 
-print('error files:\n', error_files)
+for f in parFiles:
+  run_file(f)
+
+print(len(failed_files))
+print(failed_files)
