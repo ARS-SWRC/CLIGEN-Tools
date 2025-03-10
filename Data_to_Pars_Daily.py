@@ -72,65 +72,65 @@ def daily_pars(dataFile, dataDir, parDir):
       stddevP_list.append(0.0)
       skewP_list.append(0.0)
 
-      monthly_tmax_by_year = yr_mo_query.groupby('year')['Tmax F'].apply(list)
-      monthly_tmin_by_year = yr_mo_query.groupby('year')['Tmin F'].apply(list)
-      monthly_tdew_by_year = yr_mo_query.groupby('year')['Tdew F'].apply(list)
-      monthly_srad_by_year = yr_mo_query.groupby('year')['Srad L'].apply(list)
+    monthly_tmax_by_year = yr_mo_query.groupby('year')['Tmax F'].apply(list)
+    monthly_tmin_by_year = yr_mo_query.groupby('year')['Tmin F'].apply(list)
+    monthly_tdew_by_year = yr_mo_query.groupby('year')['Tdew F'].apply(list)
+    monthly_srad_by_year = yr_mo_query.groupby('year')['Srad L'].apply(list)
 
-      tmax_values = [item for month in monthly_tmax_by_year for item in month]
-      tmin_values = [item for month in monthly_tmin_by_year for item in month]
-      tdew_values = [item for month in monthly_tdew_by_year for item in month]
-      srad_values = [item for month in monthly_srad_by_year for item in month]
+    tmax_values = [item for month in monthly_tmax_by_year for item in month]
+    tmin_values = [item for month in monthly_tmin_by_year for item in month]
+    tdew_values = [item for month in monthly_tdew_by_year for item in month]
+    srad_values = [item for month in monthly_srad_by_year for item in month]
 
-      tmax_list.append(np.mean(tmax_values))
-      tmin_list.append(np.mean(tmin_values))
-      tdew_list.append(np.mean(tdew_values))
-      srad_list.append(np.mean(srad_values))   
-      tmax_sd_list.append(np.std(tmax_values, ddof=1))
-      tmin_sd_list.append(np.std(tmin_values, ddof=1))
-      tdew_sd_list.append(np.std(tdew_values, ddof=1))
-      srad_sd_list.append(np.std(srad_values, ddof=1))
+    tmax_list.append(np.mean(tmax_values))
+    tmin_list.append(np.mean(tmin_values))
+    tdew_list.append(np.mean(tdew_values))
+    srad_list.append(np.mean(srad_values))   
+    tmax_sd_list.append(np.std(tmax_values, ddof=1))
+    tmin_sd_list.append(np.std(tmin_values, ddof=1))
+    tdew_sd_list.append(np.std(tdew_values, ddof=1))
+    srad_sd_list.append(np.std(srad_values, ddof=1))
 
-      wd_ct = 0; dd_ct = 0; dw_ct = 0; ww_ct = 0
-      dry_ct = 0; wet_ct = 0
+    wd_ct = 0; dd_ct = 0; dw_ct = 0; ww_ct = 0
+    dry_ct = 0; wet_ct = 0
 
-      for mo_data in monthly_precip_by_year:
+    for mo_data in monthly_precip_by_year:
+      print(len(mo_data))
+      for i, elem in enumerate(mo_data):
+        
+        if i < len(mo_data) - 1:
 
-        for i, elem in enumerate(mo_data):
-          
-          if i < len(mo_data) - 1:
-
-            if (elem) < acc_threshold and (mo_data[i+1]) >= acc_threshold:
-              wd_ct += 1
-            elif (elem) < acc_threshold and (mo_data[i+1]) < acc_threshold:
-              dd_ct += 1
-            elif (elem) >= acc_threshold and (mo_data[i+1]) < acc_threshold:
-              dw_ct += 1
-            elif (elem) >= acc_threshold and (mo_data[i+1]) >= acc_threshold:
-              ww_ct += 1
-            else:
-              pass
-
+          if (elem) < acc_threshold and (mo_data[i+1]) >= acc_threshold:
+            wd_ct += 1
+          elif (elem) < acc_threshold and (mo_data[i+1]) < acc_threshold:
+            dd_ct += 1
+          elif (elem) >= acc_threshold and (mo_data[i+1]) < acc_threshold:
+            dw_ct += 1
+          elif (elem) >= acc_threshold and (mo_data[i+1]) >= acc_threshold:
+            ww_ct += 1
           else:
             pass
 
-          if elem < acc_threshold:
-            dry_ct += 1
-          else:
-            wet_ct += 1
+        else:
+          pass
 
-        if wd_ct + dd_ct > 0:
-          wd = wd_ct / (wd_ct + dd_ct)
+        if elem < acc_threshold:
+          dry_ct += 1
         else:
-          wd = 0
-    
-        if dw_ct + ww_ct > 0:
-          ww = ww_ct / (dw_ct + ww_ct)
-        else:
-          ww = 0
-    
-        wd_list.append(wd)
-        ww_list.append(ww)
+          wet_ct += 1
+
+      if wd_ct + dd_ct > 0:
+        wd = wd_ct / (wd_ct + dd_ct)
+      else:
+        wd = 0
+  
+      if dw_ct + ww_ct > 0:
+        ww = ww_ct / (dw_ct + ww_ct)
+      else:
+        ww = 0
+  
+      wd_list.append(wd)
+      ww_list.append(ww)
 
 
   for i in range(12):
