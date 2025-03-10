@@ -16,6 +16,7 @@ import os
 dataFolder = r'...\dataFolder'
 parFolder = r'...\dataParFolder'
 
+
 acc_threshold = 0.0001 #Made very small. Any daily accumulation less than this number is omitted.
 
 dataFiles = os.listdir(dataFolder)
@@ -95,7 +96,7 @@ def daily_pars(dataFile, dataDir, parDir):
     dry_ct = 0; wet_ct = 0
 
     for mo_data in monthly_precip_by_year:
-      print(len(mo_data))
+
       for i, elem in enumerate(mo_data):
         
         if i < len(mo_data) - 1:
@@ -204,4 +205,5 @@ for f in dataFiles:
   output = daily_pars(f, dataFolder, parFolder)
   run_ct += 1
   print(str(run_ct) + ' / ' + str(len(dataFiles)))
+
 
