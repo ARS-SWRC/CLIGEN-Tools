@@ -27,7 +27,7 @@ def daily_pars(dataFile, dataDir, parDir):
   with open(os.path.join(dataDir, dataFile)) as f:
     next(f)
     for line in f:
-      row = line.strip('\n').split(',')[1:]
+      row = line.strip('\n').split(',')
       date = dt.datetime(year=int(row[0]), month=int(row[1]), day=int(row[2]))
       rows.append([date, float(row[3]), float(row[4]), float(row[5]), float(row[6]), float(row[7])])
 
