@@ -92,7 +92,6 @@ def daily_pars(dataFile, dataDir, parDir):
     srad_sd_list.append(np.std(srad_values, ddof=1))
 
     wd_ct = 0; dd_ct = 0; dw_ct = 0; ww_ct = 0
-    dry_ct = 0; wet_ct = 0
 
     for mo_data in monthly_precip_by_year:
 
@@ -113,11 +112,6 @@ def daily_pars(dataFile, dataDir, parDir):
 
         else:
           pass
-
-        if elem < acc_threshold:
-          dry_ct += 1
-        else:
-          wet_ct += 1
 
     if wd_ct + dd_ct > 0:
       wd = wd_ct / (wd_ct + dd_ct)
