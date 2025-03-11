@@ -119,19 +119,18 @@ def daily_pars(dataFile, dataDir, parDir):
         else:
           wet_ct += 1
 
-      if wd_ct + dd_ct > 0:
-        wd = wd_ct / (wd_ct + dd_ct)
-      else:
-        wd = 0
+    if wd_ct + dd_ct > 0:
+      wd = wd_ct / (wd_ct + dd_ct)
+    else:
+      wd = 0
 
-      if dw_ct + ww_ct > 0:
-        ww = ww_ct / (dw_ct + ww_ct)
-      else:
-        ww = 0
-
-      wd_list.append(wd)
-      ww_list.append(ww)
-
+    if dw_ct + ww_ct > 0:
+      ww = ww_ct / (dw_ct + ww_ct)
+    else:
+      ww = 0
+      
+    wd_list.append(wd)
+    ww_list.append(ww)
 
   for i in range(12):
     meanP = '{:.2f}'.format(meanP_list[i]).lstrip('0')
