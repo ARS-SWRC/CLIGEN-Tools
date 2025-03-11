@@ -182,7 +182,7 @@ def daily_pars(dataFile, dataDir, parDir):
   df.columns.name = dataFile
   df.to_csv(os.path.join(parDir, dataFile), index_label=dataFile)
   
-  with open(os.path.join(parDir, dataFile.strip('.csv') + '.txt'), 'w') as f_out:
+  with open(os.path.join(parDir, dataFile[:-4] + '.txt'), 'w') as f_out:
 
     for index in indices:
 
