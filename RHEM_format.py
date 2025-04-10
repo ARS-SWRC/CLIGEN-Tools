@@ -1,3 +1,5 @@
+import os
+
 inFolder = r'...\tseries'
 outFolder = r'...\RHEM_formatted'
 
